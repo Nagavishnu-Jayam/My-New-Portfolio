@@ -1,0 +1,2273 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J S NAGA VISHNU SAI</title>
+    <link rel="icon" href="assets\img.svg" type="image/svg+xml" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Heading font */
+        h1,
+        .section-title {
+            font-family: \'Merriweather\', serif;
+        }
+
+        :root {
+            --primary-color: #077A7D;
+            --secondary-color: #7AE2CF;
+            --accent-color: #06202B;
+            --text-color: #06202B;
+            --bg-color: #F5EEDD;
+            --card-bg: #ffffff;
+            --nav-bg: rgba(245, 238, 221, 0.9);
+            --border-color: #e5e7eb;
+        }
+
+        .dark {
+            --primary-color: #7AE2CF;
+            --secondary-color: #077A7D;
+            --accent-color: #F5EEDD;
+            --text-color: #F5EEDD;
+            --bg-color: #06202B;
+            --card-bg: #0A3240;
+            --nav-bg: rgba(6, 32, 43, 0.9);
+            --border-color: #0A3240;
+        }
+
+        /* Ensure any light-background element in dark mode uses the darkest site color for text */
+        .dark .bg-gray-50,
+        .dark .bg-white {
+            color: var(--accent-color);
+        }
+
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: all 0.3s ease;
+        }
+
+        .navbar {
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .project-card {
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-overlay {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-container {
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .timeline-dot {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border: 3px solid var(--bg-color);
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievement-card {
+            border-left: 4px solid var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateX(5px);
+            background-color: rgba(7, 122, 125, 0.1);
+        }
+
+        .stats-card {
+            background: linear-gradient(135deg, var(--card-bg), var(--bg-color));
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .animated-bg .shape {
+            position: absolute;
+            opacity: 0.2;
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .animated-bg .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            background-color: var(--primary-color);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .animated-bg .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            background-color: var(--secondary-color);
+            top: 60%;
+            left: 70%;
+            animation-delay: 3s;
+        }
+
+        .animated-bg .shape:nth-child(3) {
+            width: 250px;
+            height: 250px;
+            background-color: var(--accent-color);
+            top: 40%;
+            left: 40%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(30px, 30px) rotate(180deg);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+
+        .typewriter {
+            display: inline;
+            vertical-align: bottom;
+            overflow: hidden;
+            border-right: 3px solid var(--secondary-color);
+            white-space: nowrap;
+            margin: 0;
+            animation: blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
+        }
+
+        @keyframes deleting {
+            from {
+                width: 100%
+            }
+
+            to {
+                width: 0
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: var(--secondary-color)
+            }
+        }
+
+        .animated-image {
+            animation: float-image 6s ease-in-out infinite;
+        }
+
+        @keyframes float-image {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(45deg);
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: var(--card-bg);
+            z-index: 100;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+
+        .sidebar.open {
+            right: 0;
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+            display: none;
+        }
+
+        .sidebar-overlay.open {
+            display: block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            background-color: rgba(7, 122, 125, 0.1);
+        }
+
+        .education-card {
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+            transform: translateX(5px);
+            background-color: rgba(7, 122, 125, 0.1);
+        }
+
+        /* Professional illustrations */
+        .professional-illustration {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Enable the lift & shadow on all .card elements */
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <style>
+        *,
+        ::before,
+        ::after {
+            --tw-border-spacing-x: 0;
+            --tw-border-spacing-y: 0;
+            --tw-translate-x: 0;
+            --tw-translate-y: 0;
+            --tw-rotate: 0;
+            --tw-skew-x: 0;
+            --tw-skew-y: 0;
+            --tw-scale-x: 1;
+            --tw-scale-y: 1;
+            --tw-pan-x: ;
+            --tw-pan-y: ;
+            --tw-pinch-zoom: ;
+            --tw-scroll-snap-strictness: proximity;
+            --tw-gradient-from-position: ;
+            --tw-gradient-via-position: ;
+            --tw-gradient-to-position: ;
+            --tw-ordinal: ;
+            --tw-slashed-zero: ;
+            --tw-numeric-figure: ;
+            --tw-numeric-spacing: ;
+            --tw-numeric-fraction: ;
+            --tw-ring-inset: ;
+            --tw-ring-offset-width: 0px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-color: rgb(59 130 246 / 0.5);
+            --tw-ring-offset-shadow: 0 0 #0000;
+            --tw-ring-shadow: 0 0 #0000;
+            --tw-shadow: 0 0 #0000;
+            --tw-shadow-colored: 0 0 #0000;
+            --tw-blur: ;
+            --tw-brightness: ;
+            --tw-contrast: ;
+            --tw-grayscale: ;
+            --tw-hue-rotate: ;
+            --tw-invert: ;
+            --tw-saturate: ;
+            --tw-sepia: ;
+            --tw-drop-shadow: ;
+            --tw-backdrop-blur: ;
+            --tw-backdrop-brightness: ;
+            --tw-backdrop-contrast: ;
+            --tw-backdrop-grayscale: ;
+            --tw-backdrop-hue-rotate: ;
+            --tw-backdrop-invert: ;
+            --tw-backdrop-opacity: ;
+            --tw-backdrop-saturate: ;
+            --tw-backdrop-sepia: ;
+            --tw-contain-size: ;
+            --tw-contain-layout: ;
+            --tw-contain-paint: ;
+            --tw-contain-style:
+        }
+
+        ::backdrop {
+            --tw-border-spacing-x: 0;
+            --tw-border-spacing-y: 0;
+            --tw-translate-x: 0;
+            --tw-translate-y: 0;
+            --tw-rotate: 0;
+            --tw-skew-x: 0;
+            --tw-skew-y: 0;
+            --tw-scale-x: 1;
+            --tw-scale-y: 1;
+            --tw-pan-x: ;
+            --tw-pan-y: ;
+            --tw-pinch-zoom: ;
+            --tw-scroll-snap-strictness: proximity;
+            --tw-gradient-from-position: ;
+            --tw-gradient-via-position: ;
+            --tw-gradient-to-position: ;
+            --tw-ordinal: ;
+            --tw-slashed-zero: ;
+            --tw-numeric-figure: ;
+            --tw-numeric-spacing: ;
+            --tw-numeric-fraction: ;
+            --tw-ring-inset: ;
+            --tw-ring-offset-width: 0px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-color: rgb(59 130 246 / 0.5);
+            --tw-ring-offset-shadow: 0 0 #0000;
+            --tw-ring-shadow: 0 0 #0000;
+            --tw-shadow: 0 0 #0000;
+            --tw-shadow-colored: 0 0 #0000;
+            --tw-blur: ;
+            --tw-brightness: ;
+            --tw-contrast: ;
+            --tw-grayscale: ;
+            --tw-hue-rotate: ;
+            --tw-invert: ;
+            --tw-saturate: ;
+            --tw-sepia: ;
+            --tw-drop-shadow: ;
+            --tw-backdrop-blur: ;
+            --tw-backdrop-brightness: ;
+            --tw-backdrop-contrast: ;
+            --tw-backdrop-grayscale: ;
+            --tw-backdrop-hue-rotate: ;
+            --tw-backdrop-invert: ;
+            --tw-backdrop-opacity: ;
+            --tw-backdrop-saturate: ;
+            --tw-backdrop-sepia: ;
+            --tw-contain-size: ;
+            --tw-contain-layout: ;
+            --tw-contain-paint: ;
+            --tw-contain-style:
+        }
+
+        /* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */
+        *,
+        ::after,
+        ::before {
+            box-sizing: border-box;
+            border-width: 0;
+            border-style: solid;
+            border-color: #e5e7eb
+        }
+
+        ::after,
+        ::before {
+            --tw-content: ''
+        }
+
+        :host,
+        html {
+            line-height: 1.5;
+            -webkit-text-size-adjust: 100%;
+            -moz-tab-size: 4;
+            tab-size: 4;
+            font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-feature-settings: normal;
+            font-variation-settings: normal;
+            -webkit-tap-highlight-color: transparent
+        }
+
+        body {
+            margin: 0;
+            line-height: inherit
+        }
+
+        hr {
+            height: 0;
+            color: inherit;
+            border-top-width: 1px
+        }
+
+        abbr:where([title]) {
+            -webkit-text-decoration: underline dotted;
+            text-decoration: underline dotted
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-size: inherit;
+            font-weight: inherit
+        }
+
+        a {
+            color: inherit;
+            text-decoration: inherit
+        }
+
+        b,
+        strong {
+            font-weight: bolder
+        }
+
+        code,
+        kbd,
+        pre,
+        samp {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-feature-settings: normal;
+            font-variation-settings: normal;
+            font-size: 1em
+        }
+
+        small {
+            font-size: 80%
+        }
+
+        sub,
+        sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative;
+            vertical-align: baseline
+        }
+
+        sub {
+            bottom: -.25em
+        }
+
+        sup {
+            top: -.5em
+        }
+
+        table {
+            text-indent: 0;
+            border-color: inherit;
+            border-collapse: collapse
+        }
+
+        button,
+        input,
+        optgroup,
+        select,
+        textarea {
+            font-family: inherit;
+            font-feature-settings: inherit;
+            font-variation-settings: inherit;
+            font-size: 100%;
+            font-weight: inherit;
+            line-height: inherit;
+            letter-spacing: inherit;
+            color: inherit;
+            margin: 0;
+            padding: 0
+        }
+
+        button,
+        select {
+            text-transform: none
+        }
+
+        button,
+        input:where([type=button]),
+        input:where([type=reset]),
+        input:where([type=submit]) {
+            -webkit-appearance: button;
+            background-color: transparent;
+            background-image: none
+        }
+
+        :-moz-focusring {
+            outline: auto
+        }
+
+        :-moz-ui-invalid {
+            box-shadow: none
+        }
+
+        progress {
+            vertical-align: baseline
+        }
+
+        ::-webkit-inner-spin-button,
+        ::-webkit-outer-spin-button {
+            height: auto
+        }
+
+        [type=search] {
+            -webkit-appearance: textfield;
+            outline-offset: -2px
+        }
+
+        ::-webkit-search-decoration {
+            -webkit-appearance: none
+        }
+
+        ::-webkit-file-upload-button {
+            -webkit-appearance: button;
+            font: inherit
+        }
+
+        summary {
+            display: list-item
+        }
+
+        blockquote,
+        dd,
+        dl,
+        figure,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        hr,
+        p,
+        pre {
+            margin: 0
+        }
+
+        fieldset {
+            margin: 0;
+            padding: 0
+        }
+
+        legend {
+            padding: 0
+        }
+
+        menu,
+        ol,
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0
+        }
+
+        dialog {
+            padding: 0
+        }
+
+        textarea {
+            resize: vertical
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            opacity: 1;
+            color: #9ca3af
+        }
+
+        [role=button],
+        button {
+            cursor: pointer
+        }
+
+        :disabled {
+            cursor: default
+        }
+
+        audio,
+        canvas,
+        embed,
+        iframe,
+        img,
+        object,
+        svg,
+        video {
+            display: block;
+            vertical-align: middle
+        }
+
+        img,
+        video {
+            max-width: 100%;
+            height: auto
+        }
+
+        [hidden]:where(:not([hidden=until-found])) {
+            display: none
+        }
+
+        .container {
+            width: 100%
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                max-width: 640px
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1024px
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .container {
+                max-width: 1280px
+            }
+        }
+
+        @media (min-width: 1536px) {
+            .container {
+                max-width: 1536px
+            }
+        }
+
+        .fixed {
+            position: fixed
+        }
+
+        .absolute {
+            position: absolute
+        }
+
+        .relative {
+            position: relative
+        }
+
+        .inset-0 {
+            inset: 0px
+        }
+
+        .-left-\[14px\] {
+            left: -14px
+        }
+
+        .z-50 {
+            z-index: 50
+        }
+
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        .mb-10 {
+            margin-bottom: 2.5rem
+        }
+
+        .mb-12 {
+            margin-bottom: 3rem
+        }
+
+        .mb-16 {
+            margin-bottom: 4rem
+        }
+
+        .mb-2 {
+            margin-bottom: 0.5rem
+        }
+
+        .mb-3 {
+            margin-bottom: 0.75rem
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem
+        }
+
+        .mb-6 {
+            margin-bottom: 1.5rem
+        }
+
+        .mb-8 {
+            margin-bottom: 2rem
+        }
+
+        .mr-2 {
+            margin-right: 0.5rem
+        }
+
+        .mr-4 {
+            margin-right: 1rem
+        }
+
+        .mr-6 {
+            margin-right: 1.5rem
+        }
+
+        .mt-10 {
+            margin-top: 2.5rem
+        }
+
+        .mt-2 {
+            margin-top: 0.5rem
+        }
+
+        .flex {
+            display: flex
+        }
+
+        .grid {
+            display: grid
+        }
+
+        .hidden {
+            display: none
+        }
+
+        .h-12 {
+            height: 3rem
+        }
+
+        .h-32 {
+            height: 8rem
+        }
+
+        .h-5 {
+            height: 1.25rem
+        }
+
+        .h-6 {
+            height: 1.5rem
+        }
+
+        .h-64 {
+            height: 16rem
+        }
+
+        .h-8 {
+            height: 2rem
+        }
+
+        .min-h-screen {
+            min-height: 100vh
+        }
+
+        .w-12 {
+            width: 3rem
+        }
+
+        .w-32 {
+            width: 8rem
+        }
+
+        .w-5 {
+            width: 1.25rem
+        }
+
+        .w-6 {
+            width: 1.5rem
+        }
+
+        .w-8 {
+            width: 2rem
+        }
+
+        .w-full {
+            width: 100%
+        }
+
+        .max-w-3xl {
+            max-width: 48rem
+        }
+
+        .max-w-4xl {
+            max-width: 56rem
+        }
+
+        .max-w-lg {
+            max-width: 32rem
+        }
+
+        .max-w-md {
+            max-width: 28rem
+        }
+
+        .list-disc {
+            list-style-type: disc
+        }
+
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr))
+        }
+
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr))
+        }
+
+        .flex-col {
+            flex-direction: column
+        }
+
+        .flex-col-reverse {
+            flex-direction: column-reverse
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap
+        }
+
+        .items-start {
+            align-items: flex-start
+        }
+
+        .items-center {
+            align-items: center
+        }
+
+        .justify-end {
+            justify-content: flex-end
+        }
+
+        .justify-center {
+            justify-content: center
+        }
+
+        .justify-between {
+            justify-content: space-between
+        }
+
+        .gap-4 {
+            gap: 1rem
+        }
+
+        .gap-6 {
+            gap: 1.5rem
+        }
+
+        .gap-8 {
+            gap: 2rem
+        }
+
+        .space-x-2> :not([hidden])~ :not([hidden]) {
+            --tw-space-x-reverse: 0;
+            margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+            margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))
+        }
+
+        .space-x-3> :not([hidden])~ :not([hidden]) {
+            --tw-space-x-reverse: 0;
+            margin-right: calc(0.75rem * var(--tw-space-x-reverse));
+            margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))
+        }
+
+        .space-x-4> :not([hidden])~ :not([hidden]) {
+            --tw-space-x-reverse: 0;
+            margin-right: calc(1rem * var(--tw-space-x-reverse));
+            margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)))
+        }
+
+        .space-x-6> :not([hidden])~ :not([hidden]) {
+            --tw-space-x-reverse: 0;
+            margin-right: calc(1.5rem * var(--tw-space-x-reverse));
+            margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)))
+        }
+
+        .space-x-8> :not([hidden])~ :not([hidden]) {
+            --tw-space-x-reverse: 0;
+            margin-right: calc(2rem * var(--tw-space-x-reverse));
+            margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)))
+        }
+
+        .space-y-12> :not([hidden])~ :not([hidden]) {
+            --tw-space-y-reverse: 0;
+            margin-top: calc(3rem * calc(1 - var(--tw-space-y-reverse)));
+            margin-bottom: calc(3rem * var(--tw-space-y-reverse))
+        }
+
+        .space-y-2> :not([hidden])~ :not([hidden]) {
+            --tw-space-y-reverse: 0;
+            margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+            margin-bottom: calc(0.5rem * var(--tw-space-y-reverse))
+        }
+
+        .space-y-4> :not([hidden])~ :not([hidden]) {
+            --tw-space-y-reverse: 0;
+            margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+            margin-bottom: calc(1rem * var(--tw-space-y-reverse))
+        }
+
+        .space-y-8> :not([hidden])~ :not([hidden]) {
+            --tw-space-y-reverse: 0;
+            margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
+            margin-bottom: calc(2rem * var(--tw-space-y-reverse))
+        }
+
+        .overflow-hidden {
+            overflow: hidden
+        }
+
+        .rounded-full {
+            border-radius: 9999px
+        }
+
+        .rounded-lg {
+            border-radius: 0.5rem
+        }
+
+        .rounded-xl {
+            border-radius: 0.75rem
+        }
+
+        .bg-\[\#06202B\] {
+            --tw-bg-opacity: 1;
+            background-color: rgb(6 32 43 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-\[\#7AE2CF\]\/20 {
+            background-color: rgb(122 226 207 / 0.2)
+        }
+
+        .bg-gray-50 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-white {
+            --tw-bg-opacity: 1;
+            background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-opacity-20 {
+            --tw-bg-opacity: 0.2
+        }
+
+        .bg-gradient-to-r {
+            background-image: linear-gradient(to right, var(--tw-gradient-stops))
+        }
+
+        .from-\[\#06202B\] {
+            --tw-gradient-from: #06202B var(--tw-gradient-from-position);
+            --tw-gradient-to: rgb(6 32 43 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+        }
+
+        .from-\[\#077A7D\] {
+            --tw-gradient-from: #077A7D var(--tw-gradient-from-position);
+            --tw-gradient-to: rgb(7 122 125 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+        }
+
+        .from-\[\#7AE2CF\] {
+            --tw-gradient-from: #7AE2CF var(--tw-gradient-from-position);
+            --tw-gradient-to: rgb(122 226 207 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+        }
+
+        .to-\[\#077A7D\] {
+            --tw-gradient-to: #077A7D var(--tw-gradient-to-position)
+        }
+
+        .to-\[\#7AE2CF\] {
+            --tw-gradient-to: #7AE2CF var(--tw-gradient-to-position)
+        }
+
+        .bg-clip-text {
+            -webkit-background-clip: text;
+            background-clip: text
+        }
+
+        .p-6 {
+            padding: 1.5rem
+        }
+
+        .px-3 {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem
+        }
+
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem
+        }
+
+        .px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem
+        }
+
+        .py-1 {
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem
+        }
+
+        .py-12 {
+            padding-top: 3rem;
+            padding-bottom: 3rem
+        }
+
+        .py-2 {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem
+        }
+
+        .py-20 {
+            padding-top: 5rem;
+            padding-bottom: 5rem
+        }
+
+        .py-3 {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem
+        }
+
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem
+        }
+
+        .pb-16 {
+            padding-bottom: 4rem
+        }
+
+        .pl-5 {
+            padding-left: 1.25rem
+        }
+
+        .pl-8 {
+            padding-left: 2rem
+        }
+
+        .pt-20 {
+            padding-top: 5rem
+        }
+
+        .text-center {
+            text-align: center
+        }
+
+        .text-2xl {
+            font-size: 1.5rem;
+            line-height: 2rem
+        }
+
+        .text-3xl {
+            font-size: 1.875rem;
+            line-height: 2.25rem
+        }
+
+        .text-4xl {
+            font-size: 2.25rem;
+            line-height: 2.5rem
+        }
+
+        .text-lg {
+            font-size: 1.125rem;
+            line-height: 1.75rem
+        }
+
+        .text-sm {
+            font-size: 0.875rem;
+            line-height: 1.25rem
+        }
+
+        .text-xl {
+            font-size: 1.25rem;
+            line-height: 1.75rem
+        }
+
+        .font-bold {
+            font-weight: 700
+        }
+
+        .font-medium {
+            font-weight: 500
+        }
+
+        .font-semibold {
+            font-weight: 600
+        }
+
+        .text-\[\#077A7D\] {
+            --tw-text-opacity: 1;
+            color: rgb(7 122 125 / var(--tw-text-opacity, 1))
+        }
+
+        .text-gray-500 {
+            --tw-text-opacity: 1;
+            color: rgb(107 114 128 / var(--tw-text-opacity, 1))
+        }
+
+        .text-transparent {
+            color: transparent
+        }
+
+        .text-white {
+            --tw-text-opacity: 1;
+            color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+        }
+
+        .text-opacity-90 {
+            --tw-text-opacity: 0.9
+        }
+
+        .opacity-80 {
+            opacity: 0.8
+        }
+
+        .shadow-lg {
+            --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+        }
+
+        .transition-all {
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms
+        }
+
+        .transition-colors {
+            transition-property: color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms
+        }
+
+        .duration-300 {
+            transition-duration: 300ms
+        }
+
+        .hover\:text-\[\#7AE2CF\]:hover {
+            --tw-text-opacity: 1;
+            color: rgb(122 226 207 / var(--tw-text-opacity, 1))
+        }
+
+        .hover\:underline:hover {
+            -webkit-text-decoration-line: underline;
+            text-decoration-line: underline
+        }
+
+        .hover\:shadow-lg:hover {
+            --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+        }
+
+        .focus\:outline-none:focus {
+            outline: 2px solid transparent;
+            outline-offset: 2px
+        }
+
+        @media (min-width: 640px) {
+            .sm\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+        }
+
+        @media (min-width: 768px) {
+            .md\:mb-0 {
+                margin-bottom: 0px
+            }
+
+            .md\:mt-0 {
+                margin-top: 0px
+            }
+
+            .md\:block {
+                display: block
+            }
+
+            .md\:flex {
+                display: flex
+            }
+
+            .md\:hidden {
+                display: none
+            }
+
+            .md\:w-1\/2 {
+                width: 50%
+            }
+
+            .md\:w-1\/3 {
+                width: 33.333333%
+            }
+
+            .md\:w-2\/3 {
+                width: 66.666667%
+            }
+
+            .md\:w-2\/5 {
+                width: 40%
+            }
+
+            .md\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+
+            .md\:flex-row {
+                flex-direction: row
+            }
+
+            .md\:items-center {
+                align-items: center
+            }
+
+            .md\:px-16 {
+                padding-left: 4rem;
+                padding-right: 4rem
+            }
+
+            .md\:text-3xl {
+                font-size: 1.875rem;
+                line-height: 2.25rem
+            }
+
+            .md\:text-4xl {
+                font-size: 2.25rem;
+                line-height: 2.5rem
+            }
+
+            .md\:text-5xl {
+                font-size: 3rem;
+                line-height: 1
+            }
+
+            .md\:text-xl {
+                font-size: 1.25rem;
+                line-height: 1.75rem
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .lg\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .dark\:bg-\[\#077A7D\]\/20 {
+                background-color: rgb(7 122 125 / 0.2)
+            }
+
+            .dark\:bg-gray-800 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1))
+            }
+
+            .dark\:bg-gray-900 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1))
+            }
+
+            .dark\:text-\[\#7AE2CF\] {
+                --tw-text-opacity: 1;
+                color: rgb(122 226 207 / var(--tw-text-opacity, 1))
+            }
+
+            .dark\:text-gray-400 {
+                --tw-text-opacity: 1;
+                color: rgb(156 163 175 / var(--tw-text-opacity, 1))
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar fixed w-full py-4 px-6 md:px-16 z-50 transition-all duration-300">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#home" class="flex items-center space-x-2">
+                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="url(#paint0_linear)"></path>
+                    <path d="M2 17L12 22L22 17" stroke="url(#paint1_linear)" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                    <path d="M2 12L12 17L22 12" stroke="url(#paint2_linear)" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                    <defs>
+                        <linearGradient id="paint0_linear" x1="2" y1="7" x2="22" y2="7" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#077A7D"></stop>
+                            <stop offset="1" stop-color="#7AE2CF"></stop>
+                        </linearGradient>
+                        <linearGradient id="paint1_linear" x1="2" y1="19.5" x2="22" y2="19.5"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#077A7D"></stop>
+                            <stop offset="1" stop-color="#7AE2CF"></stop>
+                        </linearGradient>
+                        <linearGradient id="paint2_linear" x1="2" y1="14.5" x2="22" y2="14.5"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#077A7D"></stop>
+                            <stop offset="1" stop-color="#7AE2CF"></stop>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span
+                    class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#077A7D] to-[#7AE2CF]">J S NAGA VISHNU SAI.</span>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="nav-link text-sm font-medium">Home</a>
+                <a href="#about" class="nav-link text-sm font-medium">About</a>
+                <!-- <a href="#projects" class="nav-link text-sm font-medium">Projects</a> -->
+                <a href="#contact" class="nav-link text-sm font-medium">Contact</a>
+                <div class="theme-toggle" id="theme-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                            id="moon-icon"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"
+                            id="sun-icon" class="hidden"></path>
+                    </svg>
+                </div>
+                <button id="sidebar-toggle" class="flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h7"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="md:hidden flex items-center">
+                <div class="theme-toggle mr-4" id="mobile-theme-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                            id="mobile-moon-icon"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"
+                            id="mobile-sun-icon" class="hidden"></path>
+                    </svg>
+                </div>
+                <button id="mobile-menu-button" class="text-gray-500 focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <!-- <h3 class="text-xl font-bold">Menu</h3> -->
+                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="url(#paint0_linear)"></path>
+                    <path d="M2 17L12 22L22 17" stroke="url(#paint1_linear)" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                    <path d="M2 12L12 17L22 12" stroke="url(#paint2_linear)" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                    <defs>
+                        <linearGradient id="paint0_linear" x1="2" y1="7" x2="22" y2="7" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#077A7D"></stop>
+                            <stop offset="1" stop-color="#7AE2CF"></stop>
+                        </linearGradient>
+                        <linearGradient id="paint1_linear" x1="2" y1="19.5" x2="22" y2="19.5"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#077A7D"></stop>
+                            <stop offset="1" stop-color="#7AE2CF"></stop>
+                        </linearGradient>
+                        <linearGradient id="paint2_linear" x1="2" y1="14.5" x2="22" y2="14.5"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#077A7D"></stop>
+                            <stop offset="1" stop-color="#7AE2CF"></stop>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <button id="close-sidebar" class="focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="nav-link text-sm font-medium py-2">Home</a>
+                <a href="#about" class="nav-link text-sm font-medium py-2">About</a>
+                <a href="#skills" class="nav-link text-sm font-medium py-2">Skills</a>
+                <a href="#experience" class="nav-link text-sm font-medium py-2">Experience</a>
+                <a href="#projects" class="nav-link text-sm font-medium py-2">Projects</a>
+                <a href="#education" class="nav-link text-sm font-medium py-2">Education</a>
+                <a href="#courses" class="nav-link text-sm font-medium py-2">Courses</a>
+                <a href="#achievements" class="nav-link text-sm font-medium py-2">Achievements</a>
+                <a href="#contact" class="nav-link text-sm font-medium py-2">Contact</a>
+                <a href="#footer" class="nav-link text-sm font-medium py-2">Socials</a>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- Home Section -->
+    <section id="home" class="min-h-screen flex items-center relative pt-20 pb-16 px-6 md:px-16">
+        <div class="animated-bg">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="container mx-auto">
+            <div class="flex flex-col-reverse md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mt-10 md:mt-0">
+                    <h2 class="text-2xl md:text-3xl font-medium mb-2">
+                        Hi, I'm Vishnu
+                    </h2>
+                    <h1 class="text-3xl md:text-5xl font-bold mb-6">
+                        a <span id="typewriter"
+                            class="typewriter bg-clip-text text-transparent bg-gradient-to-r from-[#077A7D] to-[#7AE2CF]">Data
+                            Analyst</span>
+                    </h1>
+                    <p class="text-lg md:text-xl mb-8 max-w-lg">Meet our Data Holmes, a seasoned analyst with the
+                        adventurous spirit of Indiana Jones. This data whisperer is always ready to decode the next data
+                        mystery!</p>
+                    <div class="flex space-x-4">
+                        <a href="#contact"
+                            class="btn-primary px-6 py-3 font-medium rounded-lg shadow-lg transition-all duration-300">Get
+                            in Touch</a>
+                        <a href="#projects"
+                            class="btn-secondary px-6 py-3 font-medium rounded-lg transition-all duration-300">View
+                            Projects</a>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2 flex justify-center hidden md:flex items-center">
+                    <div class="animated-image w-full max-w-md">
+                        <img src="assets\Pebble People - Avatar and Backdrop.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 md:px-16 bg-gray-50 dark:bg-gray-900" style="color: #06202B">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-2/5 mb-10 md:mb-0">
+                    <div class="animated-image w-full max-w-md">
+                        <img src="assets\Pebble People - Working From Home.png" alt="">
+                    </div>
+                </div>
+
+                <div class="md:w-1/2">
+                    <h2 class="section-title text-3xl md:text-4xl font-bold mb-8">Discover My Story</h2>
+                    <p class="text-lg mb-6">I'm a passionate professional with a keen eye for detail and a drive for
+                        excellence. With a background in data, technology and design, I bring a unique perspective to
+                        every
+                        project I undertake.</p>
+                    <p class="text-lg mb-6">My journey in the tech industry has equipped me with a diverse skill set and
+                        the ability to adapt to rapidly changing environments. I believe in continuous learning and
+                        pushing boundaries to create innovative solutions.</p>
+                    <p class="text-lg mb-8">When I'm not coding or designing, you can find me exploring new
+                        technologies, contributing to open-source projects, or attending and networking at meetups!</p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">Education</h3>
+                            <p>Bachelor's in Computer Science,<br>Dayananda Sagar Academy of Technology and Management</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">Current Location</h3>
+                            <p>Bengaluru, Karnataka, India</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-6 md:px-16">
+        <div class="container mx-auto">
+            <h2 class="section-title text-3xl md:text-4xl font-bold mb-16 text-center">My Skills</h2>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Data Analysis</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">MIS Reporting</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">MS Power BI</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">DAX</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Power Query</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">ETL pipelines</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">ETL Tools</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Oracle SQL Developer</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Data Warehousing</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Data Visualization</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">SQL</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">MySQL</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">GCP</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Advanced Excel</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">VBA</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Macros</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Python</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">NumPy</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Pandas</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Matplotlib</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Seaborn</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Scikit-learn</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Power Apps</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Power Flow</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Power Automate</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Git</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Gitlab</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">HTML5</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">CSS3</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">JavaScript</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">React.js</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">MySQL</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">UI/UX Design</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">MongoDB</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Java</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">C++</span>
+                <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">OOPS</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-6 md:px-16 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto">
+            <h2 class="section-title text-3xl md:text-4xl font-bold mb-16" style="color: #06202B">Work Experience</h2>
+            <div class="w-full">
+                <div class="timeline-container pl-8 relative">
+                    <!-- Experience 1 -->
+                    <div class="mb-12 relative">
+                        <div class="timeline-dot w-6 h-6 rounded-full absolute -left-[14px]"></div>
+                        <div class="card p-6 rounded-lg">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                                <h3 class="text-xl font-bold">Member Technical (Data Analyst)</h3>
+                                <span
+                                    class="self-start text-sm mt-2 md:mt-0 font-medium px-4 py-1 rounded-full bg-[#7AE2CF]/20 text-[#077A7D] dark:bg-[#077A7D]/20 dark:text-[#7AE2CF]">Sep.
+                                    2024
+                                    - Present</span>
+                            </div>
+                            <h4 class="text-lg font-medium mb-4 text-[#077A7D] dark:text-[#7AE2CF]">Broadridge Financial
+                                Solutions</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Developed a system to recommend courses to associates based on their
+                                    previous enrollments and increased voluntary courses completion by 65%.</li>
+                                <li>Designed and implemented automated ETL pipelines using SQL and Pentahp PDI,
+                                    processing over 100k records per day and reducing manual data‑integration effort by
+                                    75%.</li>
+                                <li>Developed and deployed a Power Automate workflow integrating MS Outlook and
+                                    SharePoint to handle “Accept” and “Reject” responses, processing over 5k response
+                                    transactions and archiving results in SharePoint with 99.9% accuracy.
+                                </li>
+                                <li>Mentored a team of 4 junior developers in writing optimized SQL queries, improving
+                                    query performance by up to 60%</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Experience 2 -->
+                    <div class="mb-12 relative">
+                        <div class="timeline-dot w-6 h-6 rounded-full absolute -left-[14px]"></div>
+                        <div class="card p-6 rounded-lg">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                                <h3 class="text-xl font-bold">Data Analyst Intern</h3>
+                                <span
+                                    class="self-start text-sm mt-2 md:mt-0 font-medium px-4 py-1 rounded-full bg-[#7AE2CF]/20 text-[#077A7D] dark:bg-[#077A7D]/20 dark:text-[#7AE2CF]">Mar.
+                                    2024
+                                    - Sep. 2024</span>
+                            </div>
+                            <h4 class="text-lg font-medium mb-4 text-[#077A7D] dark:text-[#7AE2CF]">Broadridge Financial
+                                Solutions</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Leveraged live data to create insightful dashboards for leaders in MD’s org, driving
+                                    informed decisions with a
+                                    45% impact across cross-functional teams like L&D and HR.</li>
+                                <li>Experienced in creating impactful dashboards and analyzing data for improved MIS
+                                    reporting, resulting in a
+                                    45% increase in decision-making accuracy.</li>
+                                <li>Generated a 30% increase in WFO, 45% increase in L&D, and 5% decrease in attrition
+                                    across MD’s
+                                    organization.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Experience 3 -->
+                    <div class="relative">
+                        <div class="timeline-dot w-6 h-6 rounded-full absolute -left-[14px]"></div>
+                        <div class="card p-6 rounded-lg">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                                <h3 class="text-xl font-bold">Disaster Tweet Management</h3>
+                                <span
+                                    class="self-start text-sm mt-2 md:mt-0 font-medium px-4 py-1 rounded-full bg-[#7AE2CF]/20 text-[#077A7D] dark:bg-[#077A7D]/20 dark:text-[#7AE2CF]">
+                                    Oct. 2023 - Dec. 2023</span>
+                            </div>
+                            <h4 class="text-lg font-medium mb-4 text-[#077A7D] dark:text-[#7AE2CF]">Immensphere</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Developed a Natural Language Processing pipeline to classify disaster-related tweets using Python. </li>
+                                <li>Preprocessed 7,600+tweets by removing hashtags, punctuation, and stopwords, followed by tokenization and text normalization.</li>
+                                <li>Implementeddata cleaning techniques using pandas, numpy, and NLTK for text preprocessing.</li>
+                                <li>Built a binary classification model toidentify real disaster tweets from social media noise, preparing the dataset for machine learning algorithms to enhanceemergency response systems.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-6 md:px-16">
+        <div class="container mx-auto">
+            <h2 class="section-title text-3xl md:text-4xl font-bold mb-16 text-center">Featured Projects</h2>
+            <div class="space-y-12">
+                <!-- Project 1 -->
+                <div class="project-card rounded-xl overflow-hidden">
+                    <div class="relative h-64 bg-gradient-to-r from-[#077A7D] to-[#7AE2CF]">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <svg class="w-32 h-32 text-white opacity-80" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Disaster Tweet Management</h3>
+                            <p class="text-white text-opacity-90 mb-4">Developed a Natural Language Processing pipeline to classify disaster-related tweets using Python.</p>
+                            <div class="flex space-x-3">
+                                <span
+                                    class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-white text-sm">Python</span>
+                                <span
+                                    class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-white text-sm">Pandas</span>
+                                <span
+                                    class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-white text-sm">Numpy</span>
+                                <span class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-white text-sm">Matplotlib </span>
+                                <span class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-white text-sm">NLTP</span>
+                                <span class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-white text-sm">Scikit-learn</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-gray-800">
+                        <p class="mb-4" style="color: #06202B">Developed an end-to-end NLP pipeline in Python to classify 7,600+ disaster-related tweets using data cleaning (pandas, numpy, NLTK) and binary machine learning models for emergency response enhancement.</p>
+                        <a href="https://github.com/Nagavishnu-Jayam/DISASTER_TWEET_CLASSIFICATION"
+                            class="text-[#077A7D] dark:text-[#7AE2CF] font-medium hover:underline" target="_blank">View
+                            Project
+                            →</a>
+                    </div>
+                </div>
+
+                <!-- Project 2
+                <div class="project-card rounded-xl overflow-hidden">
+                    <div class="relative h-64 bg-gradient-to-r from-[#7AE2CF] to-[#077A7D]">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <svg class="w-32 h-32 text-white opacity-80" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M21 3H3C1.9 3 1 3.9 1 5v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM5 10h9v2H5zm0-4h9v2H5zm0 8h5v2H5z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">JoBliss: Job Application Portal</h3>
+                            <p class="text-white text-opacity-90 mb-4">A comprehensive job application management system
+                                with
+                                job applying & application tracking features.</p>
+                            <div class="flex space-x-3">
+                                <span
+                                    class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-white text-sm">MVC</span>
+                                <span
+                                    class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-white text-sm">MongoDB</span>
+                                <span
+                                    class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-white text-sm">Express.js</span>
+                                <span
+                                    class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-white text-sm">React</span>
+                                <span
+                                    class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-white text-sm">Node.js</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-gray-800">
+                        <p class="mb-4" style="color: #06202B">Built a job application management system that allows
+                            job applicants to apply to relevant jobs and track them efficiently & companies to post jobs
+                            and receive job applications.
+                        </p>
+                        <a href="https://github.com/Aastha192002/job-portal"
+                            class="text-[#077A7D] dark:text-[#7AE2CF] font-medium hover:underline" target="_blank">View
+                            Project
+                            →</a>
+                    </div>
+                </div> -->
+
+                <!-- Project 3 -->
+                <!-- <div class="project-card rounded-xl overflow-hidden">
+                    <div class="relative h-64 bg-gradient-to-r from-[#06202B] to-[#077A7D]">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <svg class="w-32 h-32 text-white opacity-80" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5-9h10v2H7z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">E-commerce Platform</h3>
+                            <p class="text-white text-opacity-90 mb-4">A modern e-commerce solution with advanced
+                                filtering, payment integration, and inventory management.</p>
+                            <div class="flex space-x-3">
+                                <span
+                                    class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-white text-sm">React</span>
+                                <span
+                                    class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-white text-sm">Express</span>
+                                <span
+                                    class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-white text-sm">PostgreSQL</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-gray-800">
+                        <p class="mb-4" style="color: #06202B">Developed a full-featured e-commerce platform with secure
+                            payment processing,
+                            inventory management, and an intuitive admin dashboard for product and order management.</p>
+                        <a href="#" class="text-[#077A7D] dark:text-[#7AE2CF] font-medium hover:underline" target="_blank">View Project
+                            →</a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="py-20 px-6 md:px-16 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto">
+            <h2 class="section-title text-3xl md:text-4xl font-bold mb-16 text-center" style="color: #06202B">My Stats
+            </h2>
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
+                    <div class="animated-image w-full max-w-md">
+                        <img src="assets\Pebble People - Explanation.png" alt="">
+                    </div>
+                </div>
+                <div class="md:w-2/3 w-full">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                        <div class="stats-card p-6 rounded-lg text-center">
+                            <h3
+                                class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#077A7D] to-[#7AE2CF]">
+                                1.5+</h3>
+                            <p class="text-lg font-medium mt-2">Years Experience</p>
+                        </div>
+                        <div class="stats-card p-6 rounded-lg text-center">
+                            <h3
+                                class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#7AE2CF] to-[#077A7D]">
+                                Feautured in Intern's Diaries</h3>
+                            <!-- <p class="text-lg font-medium mt-2">Feautured in Intern's Diaries</p> -->
+                        </div>
+                        <div class="stats-card p-6 rounded-lg text-center">
+                            <h3
+                                class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#077A7D] to-[#7AE2CF]">
+                                Recipient of the ACE Award</h3>
+                            <!-- <p class="text-lg font-medium mt-2">Open Source</p> -->
+                            <!-- <p class="text-lg font-medium mt-2">Recipient of the ACE Award</p> -->
+                        </div>
+                        <div class="stats-card p-6 rounded-lg text-center">
+                            <h3
+                                class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#7AE2CF] to-[#077A7D]">
+                                60%</h3>
+                            <!-- <p class="text-lg font-medium mt-2">Hours Coded</p> -->
+                            <p class="text-lg font-medium mt-2">Improved Time-To-Insight</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 px-6 md:px-16">
+        <div class="container mx-auto">
+            <h2 class="section-title text-3xl md:text-4xl font-bold mb-16">Education</h2>
+            <div class="w-full space-y-8">
+                <div class="education-card p-6 rounded-lg">
+                    <div class="flex items-start">
+                        <div class="mr-6">
+                            <span
+                                class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#077A7D] to-[#7AE2CF]">01</span>
+                        </div>
+                        <div>
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                                <h3 class="text-xl font-bold">Bachelor of Technology in Computer Science (B.Tech)</h3>
+                                <span
+                                    class="text-sm font-medium px-4 py-1 rounded-full bg-[#7AE2CF]/20 text-[#077A7D] dark:bg-[#077A7D]/20 dark:text-[#7AE2CF]">2020
+                                    - 2024</span>
+                            </div>
+                            <h4 class="text-lg font-medium mb-4 text-[#077A7D] dark:text-[#7AE2CF]">Dayananda Sagar Academy of Technology and Management (DSATM)</h4>
+                            <span
+                                class="text-sm font-medium px-4 py-1 rounded-full bg-[#7AE2CF]/20 text-[#077A7D] dark:bg-[#077A7D]/20 dark:text-[#7AE2CF]"
+                                style="padding: 0.25% 1% 0.25% 1%;">GPA:
+                                8.91</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="education-card p-6 rounded-lg">
+                    <div class="flex items-start">
+                        <div class="mr-6">
+                            <span
+                                class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#077A7D] to-[#7AE2CF]">02</span>
+                        </div>
+                        <div>
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                                <h3 class="text-xl font-bold">Bachelor of Technology in Computer Science</h3>
+                                <span
+                                    class="text-sm font-medium px-4 py-1 rounded-full bg-[#7AE2CF]/20 text-[#077A7D] dark:bg-[#077A7D]/20 dark:text-[#7AE2CF]">2014
+                                    - 2018</span>
+                            </div>
+                            <h4 class="text-lg font-medium mb-4 text-[#077A7D] dark:text-[#7AE2CF]">Delhi Technical
+                                University</h4>
+                            <p>Graduated with First Class Honors. Participated in multiple hackathons and coding
+                                competitions. Led the university's web development club and organized technical
+                                workshops.</p>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="education-card p-6 rounded-lg">
+                    <div class="flex items-start">
+                        <div class="mr-6">
+                            <span
+                                class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#077A7D] to-[#7AE2CF]">02</span>
+                        </div>
+                        <div>
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                                <h3 class="text-xl font-bold">Higher Secondary Education</h3>
+                                <span
+                                    class="text-sm font-medium px-4 py-1 rounded-full bg-[#7AE2CF]/20 text-[#077A7D] dark:bg-[#077A7D]/20 dark:text-[#7AE2CF]">2018
+                                    - 2020</span>
+                            </div>
+                            <h4 class="text-lg font-medium mb-4 text-[#077A7D] dark:text-[#7AE2CF]">Pinegrove Junior College
+                            </h4>
+
+                            <span
+                                class="text-sm font-medium px-4 py-1 rounded-full bg-[#7AE2CF]/20 text-[#077A7D] dark:bg-[#077A7D]/20 dark:text-[#7AE2CF]"
+                                style="padding: 0.25% 1% 0.25% 1%;">Grade:
+                                95.9%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-20 px-6 md:px-16 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto">
+            <h2 class="section-title text-3xl md:text-4xl font-bold mb-16 text-center" style="color: #06202B">Courses
+                &amp; Certifications</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card p-6 rounded-lg hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 rounded-full bg-gradient-to-r from-[#077A7D] to-[#7AE2CF] flex items-center justify-center text-white text-xl font-bold mr-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 18l4-6-4-6M8 6l-4 6 4 6"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold">Python Essential Training</h3>
+                    </div>
+                    <p class="mb-4">Foundational training in Python programming for problem-solving and automation.
+                    </p>
+                    <p class="mb-4"><i>~LinkedIn</i></p>
+                    <a href="#" class="text-[#077A7D] dark:text-[#7AE2CF] font-medium hover:underline"
+                        target="_blank">View Certificate
+                        →</a>
+                </div>
+
+                <div class="card p-6 rounded-lg hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 rounded-full bg-gradient-to-r from-[#077A7D] to-[#7AE2CF] flex items-center justify-center text-white text-xl font-bold mr-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g transform="translate(0, 0)">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 15a4 4 0 014-4h1a5 5 0 019.9-1.4A4.5 4.5 0 1119 19H7a4 4 0 01-4-4z" />
+                                </g>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold">SQL Essential Training</h3>
+                    </div>
+                    <p class="mb-4">Step-by-step guide to understanding and querying relational databases using SQL.</p>
+                    <p class="mb-4"><i>~NASBA</i></p>
+                    <a href="#"
+                        class="text-[#077A7D] dark:text-[#7AE2CF] font-medium hover:underline" target="_blank">View
+                        Certificate
+                        →</a>
+                </div>
+
+                <div class="card p-6 rounded-lg hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 rounded-full bg-gradient-to-r from-[#7AE2CF] to-[#077A7D] flex items-center justify-center text-white text-xl font-bold mr-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold">Oracle Database 19c: PL/SQL</h3>
+                    </div>
+                    <p class="mb-4">Learn to develop and manage programs using PL/SQL within Oracle Database 19c.</p>
+                    <p class="mb-4"><i>~LinkedIn</i></p>
+                    <a href="#" class="text-[#077A7D] dark:text-[#7AE2CF] font-medium hover:underline"
+                        target="_blank">View Certificate
+                        →</a>
+                </div>
+
+                <div class="card p-6 rounded-lg hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 rounded-full bg-gradient-to-r from-[#077A7D] to-[#7AE2CF] flex items-center justify-center text-white text-xl font-bold mr-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 3h4v18h-4zM7 21h10v-2H7v2zM7 5h10V3H7v2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold">Statistics Foundations 1: The Basics</h3>
+                    </div>
+                    <p class="mb-4">Covers the fundamental concepts and methods of statistics for analysis and inference.</p>
+                    <p class="mb-4"><i>~NASBA</i></p>
+                    <a href="#" class="text-[#077A7D] dark:text-[#7AE2CF] font-medium hover:underline"
+                        target="_blank">View
+                        Certificate
+                        →</a>
+                </div>
+
+                <div class="card p-6 rounded-lg hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 rounded-full bg-gradient-to-r from-[#077A7D] to-[#7AE2CF] flex items-center justify-center text-white text-xl font-bold mr-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 3h4v18h-4zM7 21h10v-2H7v2zM7 5h10V3H7v2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold">Microsoft Azure fundamentals</h3>
+                    </div>
+                    <p class="mb-4">Provides foundational knowledge of cloud concepts and core Microsoft Azure services, management, and governance.</p>
+                    <p class="mb-4"><i>~NASBA</i></p>
+                    <a href="#" class="text-[#077A7D] dark:text-[#7AE2CF] font-medium hover:underline"
+                        target="_blank">View
+                        Certificate
+                        →</a>
+                </div>
+
+                <div class="card p-6 rounded-lg hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 rounded-full bg-gradient-to-r from-[#077A7D] to-[#7AE2CF] flex items-center justify-center text-white text-xl font-bold mr-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 18l4-6-4-6M8 6l-4 6 4 6"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold">Learning Java 11 </h3>
+                    </div>
+                    <p class="mb-4">Introduction to writing robust and modern applications using features from Java version 11.
+                    </p>
+                    <p class="mb-4"><i>~LinkedIn</i></p>
+                    <a href="#" class="text-[#077A7D] dark:text-[#7AE2CF] font-medium hover:underline"
+                        target="_blank">View Certificate
+                        →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="py-20 px-6 md:px-16">
+        <div class="container mx-auto">
+            <h2 class="section-title text-3xl md:text-4xl font-bold mb-16">Achievements</h2>
+            <div class="w-full space-y-8">
+                <div class="achievement-card p-6 rounded-lg">
+                    <div class="flex items-start">
+                        <span
+                            class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#077A7D] to-[#7AE2CF] mr-6">01</span>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Above and Beyond Award</h3>
+                            <p>For exceptional performance and outstanding task execution,demonstrating excellence in project delivery and exceeding performance expectations in Broadridge.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="achievement-card p-6 rounded-lg">
+                    <div class="flex items-start">
+                        <span
+                            class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#7AE2CF] to-[#077A7D] mr-6">02</span>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Intern’s Diaries</h3>
+                            <p>Featured in the “Intern’s Diaries” publication in Broadridge for outstanding contributions to data analytics projects.
+                                </p>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="py-20 px-6 md:px-16 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto">
+            <h2 class="section-title text-3xl md:text-4xl font-bold mb-16 text-center" style="color: #06202B">
+                Soft Skill's</h2>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Problem Solving</span>
+                    <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Team Work</span>
+                    <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Critical thinking</span>
+                    <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Leadership</span>
+                    <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Communication</span>
+                    <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Adaptability</span>
+                    <span class="skill-tag px-6 py-3 rounded-full text-white font-medium">Self Learner</span>
+                    
+                </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 md:px-16">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h2 class="section-title text-3xl md:text-4xl font-bold mb-6">Want to hire me?</h2>
+                    <p class="text-lg mb-8 max-w-lg">I'm always open to discussing new projects, creative ideas, or
+                        opportunities to be part of your vision.</p>
+                    <div class="flex space-x-4">
+                        <a href="assets/Vishnu.pdf" download
+                            class="btn-primary px-6 py-3 font-medium rounded-lg shadow-lg transition-all duration-300 flex items-center"
+                            target="_blank">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                            </svg>
+                            Download Resume
+                        </a>
+                        <a href="mailto:nagavishnujayam1999@gmail.com"
+                            class="btn-secondary px-6 py-3 font-medium rounded-lg transition-all duration-300 flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            Email Me
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 hidden md:flex items-center">
+                    <div class="animated-image w-full max-w-md" style="padding-left: 25%;">
+                        <img src="assets\Pebble People - Running.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="py-12 px-6 md:px-16 bg-gray-100 dark:bg-[#06202B] dark:text-white text-[#06202B]">
+        <div class="flex justify-center space-x-6 mt-4">
+            <a href="https://www.linkedin.com/in/nagavishnu-jayam-5129011a9/" aria-label="LinkedIn"><i
+                    class="fab fa-linkedin text-xl"></i></a>
+            <a href="https://github.com/Nagavishnu-Jayam" aria-label="GitHub"><i class="fab fa-github text-xl"></i></a>
+        </div>
+        <p class="text-center text-sm mt-4">2025. J S NAGA VISHNU SAI | All right reserved</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const words = ["Data Analyst", "Data Science Enthusiast", "Web Designer", "Web Developer", "Problem Solver"];
+            let i = 0, j = 0, currentWord = "", isDeleting = false;
+            const typewriter = document.getElementById("typewriter");
+
+            function type() {
+                if (i < words.length) {
+                    if (!isDeleting && j <= words[i].length) {
+                        currentWord = words[i].substring(0, j++);
+                    } else if (isDeleting && j >= 0) {
+                        currentWord = words[i].substring(0, j--);
+                    }
+
+                    typewriter.textContent = currentWord;
+
+                    if (!isDeleting && j === words[i].length + 1) {
+                        isDeleting = true;
+                        setTimeout(type, 1000);
+                    } else if (isDeleting && j === 0) {
+                        isDeleting = false;
+                        i = (i + 1) % words.length;
+                        setTimeout(type, 200);
+                    } else {
+                        setTimeout(type, isDeleting ? 50 : 100);
+                    }
+                }
+            }
+
+            type();
+        });
+    </script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const themeToggle = document.getElementById("theme-toggle");
+            const mobileToggle = document.getElementById("mobile-theme-toggle");
+            const html = document.documentElement;
+
+            function toggleTheme() {
+                html.classList.toggle("dark");
+            }
+
+            themeToggle && themeToggle.addEventListener("click", toggleTheme);
+            mobileToggle && mobileToggle.addEventListener("click", toggleTheme);
+
+            const sidebarToggle = document.getElementById("sidebar-toggle");
+            const sidebar = document.getElementById("sidebar");
+            const sidebarOverlay = document.getElementById("sidebar-overlay");
+            const closeSidebar = document.getElementById("close-sidebar");
+            const mobileMenu = document.getElementById("mobile-menu-button");
+
+            function toggleSidebar() {
+                sidebar.classList.toggle("open");
+                sidebarOverlay.classList.toggle("open");
+            }
+
+            sidebarToggle && sidebarToggle.addEventListener("click", toggleSidebar);
+            mobileMenu && mobileMenu.addEventListener("click", toggleSidebar);
+            closeSidebar && closeSidebar.addEventListener("click", toggleSidebar);
+            sidebarOverlay && sidebarOverlay.addEventListener("click", toggleSidebar);
+        });
+    </script>
+
+</body>
+
+</html>
